@@ -26,6 +26,8 @@ personaje1.atributos()
 enemigo1 = Personaje("Enemy", 8,100,9)
 enemigo1.atributos()
 
+personaje1.ataque(enemigo1)
+
 class Guerrero(Personaje):
   def __init__(self, nombre, daño, vida, defensa, espada, escudo):
     super().__init__(nombre, daño, vida, defensa)

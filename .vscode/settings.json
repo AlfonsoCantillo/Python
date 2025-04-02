@@ -1,0 +1,5 @@
+{
+  "python.analysis.extraPaths": [
+    "./Modulo3_Excepciones/proyecto/src"
+  ]
+}
