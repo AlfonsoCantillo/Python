@@ -1,5 +1,6 @@
 {
   "python.analysis.extraPaths": [
-    "./Modulo3_Excepciones/proyecto/src"
+    "./Modulo3_Excepciones/proyecto/src",
+    "./Modulo3_Excepciones/proyecto/tests/test_negocio_"
   ]
 }
