@@ -12,6 +12,7 @@ class MenuVehiculo:
       print("2. Actualizar vehículos")
       print("3. Eliminar vehículos")
       print("4. Ver vehículos")
+      print("5. Salida de vehículos")
       print("0. Salir")
       opcion = input("Ingrese una opción: ")  
       if opcion == "1":
@@ -21,7 +22,9 @@ class MenuVehiculo:
       elif opcion == "3":
         self.eliminar_vehiculo()        
       elif opcion == "4":
-        self.ver_vehiculos()        
+        self.ver_vehiculos()  
+      elif opcion == "5":
+        self.liquidar_vehiculo()      
       elif opcion == "0":
         print("Saliendo")
         break
@@ -41,7 +44,7 @@ class MenuVehiculo:
   
   def actualizar_vehiculo(self):
     placa = input("Ingrese la placa del vehiculo que desea actualizar: ")  
-    if self.controller_vehiculos.obtener_vehiculos_uno(placa):
+    if self.controller_vehiculos.existe_vehiculo(placa):
       tipoVehiculo = input("Ingrese el tipo de vehículo: ")
       fechaIngreso = datetime.datetime.now()
       resultado = self.controller_vehiculos.modificar_vehiculo(placa,tipoVehiculo,fechaIngreso)
@@ -51,9 +54,17 @@ class MenuVehiculo:
 
   def eliminar_vehiculo(self):
     placa = input("Ingrese la placa del vehiculo que desea eliminar: ")  
-    if self.controller_vehiculos.obtener_vehiculos_uno(placa):      
+    if self.controller_vehiculos.existe_vehiculo(placa):      
       resultado = self.controller_vehiculos.eliminar_vehiculo(placa)
       print(resultado['mensaje'])
     else:
       print(f"El vehículo con placas {placa}, no se encuentra al interior del parqueadero.")
-    
+  
+  def liquidar_vehiculo(self):
+    placa = input("Ingrese la placa del vehiculo que desea liquidar: ")  
+    if self.controller_vehiculos.existe_vehiculo(placa):        
+      fecha_salida= datetime.datetime.now()      
+      resultado= self.controller_vehiculos.liquidar_vehiculo(placa, fecha_salida.strftime("%Y-%m-%d %H:%M:%S"))
+      print(resultado['mensaje'])
+    else:
+      print(f"El vehículo con placas {placa}, no se encuentra al interior del parqueadero.")
